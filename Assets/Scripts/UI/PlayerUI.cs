@@ -14,6 +14,9 @@ public class PlayerUI : MonoBehaviour
     
     [SerializeField] private Image[] numHearts;
 
+    [Header("Sounds")]
+    public AudioSource DeathBGM;
+
     private void Start(){
         UpdateHealth();
     }
@@ -27,10 +30,13 @@ public class PlayerUI : MonoBehaviour
             if(restartMenuTimer >= 2.0f) { //delays opening restart menu by 2 second
                 restartMenu.SetActive(true);
                 restartMenuTimer = 0.0f; //resets timer
+                
             }  
         }else{
             restartMenu.SetActive(false);
             restartMenuTimer = 0.0f; //resets timer
+            
+
         }
         UpdateHealth();
     }
@@ -44,7 +50,7 @@ public class PlayerUI : MonoBehaviour
             //print("Player Dead");
             //Destroy(gameObject, 1f);
             //Time.timeScale = 0f;
-           
+
         }
         for(int i = 0; i < numHearts.Length; i++) {
             if(i < health) {
