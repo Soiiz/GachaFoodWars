@@ -9,10 +9,15 @@ public class GachaMachineController : MonoBehaviour
     public KeyCode interactKey;
     public UnityEvent interactAction;
 
+    public AudioClip ovenClip;
+    public AudioSource audioSource;
+
     void Start()
     {
-
+        
     }
+
+    
 
     public void Update()
     {
@@ -20,6 +25,7 @@ public class GachaMachineController : MonoBehaviour
         {
             if (Input.GetKeyDown(interactKey))
             {
+                
                 interactAction.Invoke();    // start event
             }
         }

@@ -9,7 +9,7 @@ public class Gacha : MonoBehaviour
 {
     public GameObject GachaUI;
     public TMP_Text WeaponObtainedUI;
-    public AudioSource OvenGachaSFX;
+    
 
     [SerializeField]
     //public List<GameObject> weapons;                // list of all weapons
@@ -18,6 +18,9 @@ public class Gacha : MonoBehaviour
     [SerializeField]
     public int[] table = {500, 300, 160, 40};       // total weight of each rarity
     public string[] tableName = {"Sword", "Axe", "Bow", "Gun"};     // weapon name of the according rarity above
+
+    [Header("Sounds")]
+    public AudioSource GachaSFX;
 
     public int totalWeight;
     public int randomNumber;
@@ -30,12 +33,12 @@ public class Gacha : MonoBehaviour
         {
             totalWeight += item;
         }
-        OvenGachaSFX=GetComponent<AudioSource>();
+        
     }
 
     public void StartGacha()
     {
-        OvenGachaSFX.Play();
+        GachaSFX.Play();
         print("interact key was pressed");
         // generate random number
         randomNumber = Random.Range(0, totalWeight);
@@ -45,6 +48,7 @@ public class Gacha : MonoBehaviour
             // compare random number to the [i] weight in loot table, if smaller give [i] item
             if(randomNumber <= table[i])
             {
+                
                 //weapons[i].SetActive(true);
                 Inventory.instance.Add(Items[i]);
                 GachaUI.SetActive(true);
