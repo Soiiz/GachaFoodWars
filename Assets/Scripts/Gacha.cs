@@ -9,6 +9,7 @@ public class Gacha : MonoBehaviour
 {
     public GameObject GachaUI;
     public TMP_Text WeaponObtainedUI;
+    public AudioSource OvenGachaSFX;
 
     [SerializeField]
     //public List<GameObject> weapons;                // list of all weapons
@@ -29,10 +30,12 @@ public class Gacha : MonoBehaviour
         {
             totalWeight += item;
         }
+        OvenGachaSFX=GetComponent<AudioSource>();
     }
 
     public void StartGacha()
     {
+        OvenGachaSFX.Play();
         print("interact key was pressed");
         // generate random number
         randomNumber = Random.Range(0, totalWeight);

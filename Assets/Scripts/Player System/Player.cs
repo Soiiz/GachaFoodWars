@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Sounds")]
+
+    public AudioSource dying;
+    public AudioSource takingDamage;
+
+
     [Header("References")]
     public PlayerUI healthControl;
     public PlayerStats playerStats;
@@ -22,6 +29,8 @@ public class Player : MonoBehaviour
 
     public void Start()
     {
+     
+    
         //healthControl = GameObject.FindWithTag("HealthController").GetComponent<PlayerUI>();
         health = playerStats.playerHealthData.GetPlayerHealth();
         healthControl.GetComponent<PlayerUI>().SetHealth(health);
@@ -30,22 +39,28 @@ public class Player : MonoBehaviour
 
     public void takeDamage(int damage)
     {
+        takingDamage.Play();
         if (delayDamage)
         {
-            //health -= damage;
+            
             playerStats.playerHealthData.ModifyPlayerHealth(-damage);
+            
             health = playerStats.playerHealthData.GetPlayerHealth();
 
             /*if (healthControl != null)
             {
                 healthControl.GetComponent<PlayerUI>().SetHealth(health);
             }*/
+           
 
             StartCoroutine(damageTimer());
         }
+        
 
         if(health <= 0) {
+            takingDamage.Stop();
            if(!playerDead) {
+                dying.Play();
                 Debug.Log("Player died");
                 sprite.animation.SetTrigger("PlayerDead");
                 //player.GetComponent<CharacterController>().enabled = false;
