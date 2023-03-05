@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EquipmentManager : MonoBehaviour
 {
+    [Header("Sounds")]
+
+    public AudioSource itemEquipSFX;
+    
     public static EquipmentManager instance;
     void Awake()
     {
@@ -42,6 +46,7 @@ public class EquipmentManager : MonoBehaviour
             {
                 if (currentEquipment[i] == null && !(modifierCheck((Modifier)newItem) && wc.element != WeaponController.Element.None))
                 {
+                    
                     currentEquipment[i] = newItem;
                     newItem.RemoveFromInventory();
                     if (onEquipmentChangedCallBack != null)

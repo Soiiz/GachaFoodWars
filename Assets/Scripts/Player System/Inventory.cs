@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    
     // Allows us to update the ui when knowing when inventory is changed
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallBack;
@@ -43,11 +44,13 @@ public class Inventory : MonoBehaviour
 
     public void Remove(Item item)
     {
+       
         // Debug.Log("Removing");
         //Debug.Log("Removing " + item.itemObject);
         items.Remove(item);
         if (onItemChangedCallBack != null)
         {
+            
             onItemChangedCallBack.Invoke();
         }
     }

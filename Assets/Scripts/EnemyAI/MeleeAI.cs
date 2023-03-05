@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class MeleeAI : Enemy
 {
-
+    public AudioSource MeleeAttackSFX;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -33,6 +33,11 @@ public class MeleeAI : Enemy
             // attack player
             if (attackcooldown <= 0.0f)
             {
+                if (MeleeAttackSFX != null)
+                {
+                    MeleeAttackSFX.Play();
+                }
+
                 // subject to change based on how we implement player health
                 player.GetComponent<Player>().takeDamage(damage);
                 attackcooldown = 1 / attackRate;
@@ -43,6 +48,7 @@ public class MeleeAI : Enemy
         if (attackcooldown > 0.0f)
         {
             attackcooldown -= Time.deltaTime;
+            
         }
     }
     void OnDrawGizmosSelected()
