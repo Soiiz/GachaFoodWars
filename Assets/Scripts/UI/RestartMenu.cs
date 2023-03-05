@@ -19,8 +19,10 @@ public class RestartMenu : MonoBehaviour
         {
             Destroy(GameObjects[i]);
         }
+        GameObject.FindWithTag("BackgroundMusic").GetComponent<AudioSource>().enabled = false;
         SceneManager.LoadScene("Main Menu");
         restartMenu.SetActive(false);
+        
     }
 
     public void QuitGame()

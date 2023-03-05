@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
 
         SceneManager.LoadScene(_nextScene);
         Time.timeScale = 1f;
-        //GameObject.FindWithTag("BackgroundMusic").GetComponent<AudioSource>().enabled = true;
+        GameObject.FindWithTag("BackgroundMusic").GetComponent<AudioSource>().enabled = true;
     }
 
     public void QuitGame(){

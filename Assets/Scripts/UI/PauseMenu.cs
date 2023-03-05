@@ -55,6 +55,7 @@ public class PauseMenu : MonoBehaviour
         menuClick.Play();
         Time.timeScale = 1f;
         isPaused = false;
+        GameObject.FindWithTag("BackgroundMusic").GetComponent<AudioSource>().enabled = false;
         SceneManager.LoadScene("Main Menu");
     }
 
