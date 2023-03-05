@@ -14,8 +14,6 @@ public class PlayerUI : MonoBehaviour
     
     [SerializeField] private Image[] numHearts;
 
-    [Header("Sounds")]
-    public AudioSource DeathBGM;
 
     private void Start(){
         UpdateHealth();

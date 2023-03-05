@@ -9,9 +9,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField] string restScene; // rest string name 
     [SerializeField] PlayerProgression pprog;
 
+    [Header("Sounds")]
+    public AudioSource menuClick;
+
     private string _nextScene;
 
     public void PlayGame(){
+        menuClick.Play();
         if (!pprog.TrainingComplete)
         {
             _nextScene = trainingScene;
@@ -28,6 +32,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void QuitGame(){
+        menuClick.Play();
         Application.Quit();
     }
 }
