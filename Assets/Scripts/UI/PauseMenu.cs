@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    [Header("Sounds")]
+    public AudioSource menuClick;
     protected Canvas pauseMenu;
     //public GameObject restartMenu;
     public static bool isPaused;
@@ -34,6 +36,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        menuClick.Play();
         pauseMenu.enabled = true;
         Time.timeScale = 0f;
         isPaused = true;
@@ -41,6 +44,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+        menuClick.Play();
         pauseMenu.enabled = false;
         Time.timeScale = 1f;
         isPaused = false;
@@ -48,6 +52,7 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        menuClick.Play();
         Time.timeScale = 1f;
         isPaused = false;
         SceneManager.LoadScene("Main Menu");
@@ -55,6 +60,7 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        menuClick.Play();
         Application.Quit();
     }
 }
