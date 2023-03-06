@@ -48,9 +48,9 @@ public class PlayerUI : MonoBehaviour
         }
         for(int i = 0; i < numHearts.Length; i++) {
             if(i < health) {
-                numHearts[i].color = Color.red;
+                numHearts[i].enabled = true;
             } else {
-                numHearts[i].color = Color.black;
+                numHearts[i].enabled = false;
             }
         }
     }
