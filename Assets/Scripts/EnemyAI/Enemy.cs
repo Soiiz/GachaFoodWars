@@ -9,7 +9,9 @@ public class Enemy : MonoBehaviour
     public GameObject drop;
 
     public GameObject player;
-    public AudioClip[] deathSounds;
+    //public AudioClip[] deathSounds;
+
+
     [Header("Stats")]
     public float maxHealth = 100.0f;
     public float health = 100.0f;
@@ -46,6 +48,8 @@ public class Enemy : MonoBehaviour
     protected float invunerableTimer = 0.0f;
     protected float elementTimer = 0.0f;
 
+    [Header("DeathSound")]
+    public AudioSource deathSound;
 
     //public enum Element { None, Fire, Ice, Electric };
 
@@ -137,11 +141,14 @@ public class Enemy : MonoBehaviour
                 dropInstance.GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-1f, 1f), 2, Random.Range(-1f, 1f));
             }
             // play random death sound
-            if (deathSounds.Length > 0)
-            {
-                var deathSound = deathSounds[Random.Range(0, deathSounds.Length)];
-                AudioSource.PlayClipAtPoint(deathSound, transform.position);
-            }
+            //if (deathSounds.Length > 0)
+            ////{
+            ////    var deathSound = deathSounds[Random.Range(0, deathSounds.Length)];
+            ////    AudioSource.PlayClipAtPoint(deathSound, transform.position);
+            //}
+
+            deathSound.Play();
+
             //play death animation
             if (spriteAnimator != null)
             {
